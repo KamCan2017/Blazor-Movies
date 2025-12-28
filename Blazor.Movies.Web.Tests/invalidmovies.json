@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "The Matrix",
+    "image": "1.jpg",
+    "genre": "action",
+    "rating": 10
+  },
+  {
+    "id": -25,
+    "title": "Inception",
+    "image": "2.jpg",
+    "genre": "thriller",
+    "rating": 6
+  }
+]

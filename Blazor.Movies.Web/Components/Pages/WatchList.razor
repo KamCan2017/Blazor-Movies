@@ -1,0 +1,34 @@
+@page "/watchlist"
+
+@using Blazor.Movies.Web.Models
+@using Blazor.Movies.Web.StateObservers
+@using Blazor.Movies.Web.ViewModels.Scenario2
+@inject WatchListViewModel2 WatchListViewModel
+@inject   IStateManager StateManager
+@rendermode InteractiveServer
+
+<PageTitle>WatchList</PageTitle>
+
+<div>
+    <h1 class="title">Your Watchlist</h1>
+    @if (WatchListViewModel.MovieWatchList.Any())
+    {
+        <div class="watchlist">
+            @foreach (var movie in WatchListViewModel.MovieWatchList)
+            {
+                <MovieCard Movie=@movie></MovieCard>
+            }
+        </div>
+    }
+</div>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        //StateObserver.Subscribe<WatchListChanged,bool>(_ => StateHasChanged());
+        StateManager.Subscribe(StateKeys.Watchlist, state => StateHasChanged());
+        await WatchListViewModel.LoadWatchList();
+        StateHasChanged();
+    }
+}

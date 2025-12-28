@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "title": "Dark Storm",
+    "image": "7.jpg",
+    "genre": "drama",
+    "rating": 8.3
+  },
+  {
+    "id": 2,
+    "title": "Magical Adventure",
+    "image": "3.jpg",
+    "genre": "fantasy",
+    "rating": 7.7
+  },
+  {
+    "id": 3,
+    "title": "Beyond the Edge",
+    "image": "5.jpg",
+    "genre": "science fiction",
+    "rating": 6.3
+  },
+  {
+    "id": 4,
+    "title": "Lost in Shadows",
+    "image": "2.jpg",
+    "genre": "action",
+    "rating": 9.3
+  },
+  {
+    "id": 5,
+    "title": "Echoes of Power",
+    "image": "5.jpg",
+    "genre": "fantasy",
+    "rating": 6.9
+  },
+  {
+    "id": 6,
+    "title": "Grim Reckoning",
+    "image": "11.jpg",
+    "genre": "drama",
+    "rating": 8.4
+  },
+  {
+    "id": 7,
+    "title": "Fury's Flight",
+    "image": "7.jpg",
+    "genre": "action",
+    "rating": 9.8
+  },
+  {
+    "id": 8,
+    "title": "Path of the Forgotten",
+    "image": "8.jpg",
+    "genre": "action",
+    "rating": 7.2
+  },
+  {
+    "id": 9,
+    "title": "Nightmare's Threshold",
+    "image": "5.jpg",
+    "genre": "science fiction",
+    "rating": 1.7
+  },
+  {
+    "id": 10,
+    "title": "Eternal Hunt",
+    "image": "11.jpg",
+    "genre": "fantasy",
+    "rating": 7.5
+  },
+  {
+    "id": 11,
+    "title": "Legacy of the Void",
+    "image": "11.jpg",
+    "genre": "action",
+    "rating": 8.5
+  },
+  {
+    "id": 12,
+    "title": "Shadow's Crescent",
+    "image": "8.jpg",
+    "genre": "science fiction",
+    "rating": 7.5
+  }
+]

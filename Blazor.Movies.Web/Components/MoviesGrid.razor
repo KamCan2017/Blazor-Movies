@@ -1,0 +1,70 @@
+
+@using Blazor.Movies.Web.Models
+@using Blazor.Movies.Web.ViewModels.Scenario2
+@inject MoviesGridViewModel2  MoviesGridViewModel
+
+<div>
+@if(!MoviesGridViewModel.LoadedMovies.Any())
+    {
+        <h3 class="app-subtitle">No Movies found :-(</h3>
+    }
+    else
+    {
+        <div class="container">
+            <input
+                type="text"
+                class="search-input"
+                @bind="@MoviesGridViewModel.SearchTerm"
+                @bind:event="oninput" @bind:after="MoviesGridViewModel.HandleFiltering"
+                placeholder="Search movies..."/>
+            
+            <div class="filter-bar">
+                <div class="filter-slot">
+                    <label>Genre</label>
+                    <select
+                        class="filter-dropdown"
+                        @bind="@MoviesGridViewModel.SelectedGenre"
+                        @bind:event="oninput" @bind:after="MoviesGridViewModel.HandleFiltering">
+                        <option>@MovieGenre.AllGenres</option>
+                        <option>@MovieGenre.ScienceFiction</option>
+                        <option>@MovieGenre.Action</option>
+                        <option>@MovieGenre.Drama</option>
+                        <option>@MovieGenre.Thriller</option>
+                        <option>@MovieGenre.Comedy</option>
+                        <option>@MovieGenre.Fantasy</option>
+                    </select>
+                </div>
+
+                <div class="filter-slot">
+                    <label>Rating</label>
+                    <select
+                        class="filter-dropdown"
+                        @bind="@MoviesGridViewModel.SelectedRating"
+                        @bind:event="oninput" @bind:after="MoviesGridViewModel.HandleFiltering">
+                        <option>@MovieRating.All</option>
+                        <option>@MovieRating.Good</option>
+                        <option>@MovieRating.Ok</option>
+                        <option>@MovieRating.Bad</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="movies-grid">
+                @foreach (var movie in MoviesGridViewModel.FilteredMovies)
+                {
+                    <MovieCard Movie=@movie/>
+                }
+            </div>
+
+        </div>
+       
+    }
+</div>
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await MoviesGridViewModel.LoadMovies();
+    }
+}

@@ -1,0 +1,62 @@
+@using Blazor.Movies.Web.Models
+@using Blazor.Movies.Web.ViewModels.Scenario2
+@inject MovieCardViewModel2 MovieCardViewModel
+
+<div class="movie-card" >
+    @if (MovieCardViewModel.ShowImage)
+    {
+        <img src="@Assets[$"images/{ MovieCardViewModel.Movie.Image}"]" 
+             alt="@MovieCardViewModel.Movie.Title" 
+             @onerror="HandleError"/> 
+    }
+    else
+    {
+        <img src="@Assets["images/default.jpg"]" 
+             alt="default image"/> 
+    }
+    <div class="movie-card-info">
+        <h3 class="movie-card-title">@MovieCardViewModel.Movie.Title</h3>
+        <div>
+            <span class="movie-card-genre">@MovieCardViewModel.Movie.Genre</span>
+            <span class="@($"movie-card-rating {MovieCardViewModel2.GetRatingClass(MovieCardViewModel.Movie.Rating)}")">
+                @MovieCardViewModel.Movie.Rating
+            </span>
+        </div>
+        <label class="switch">
+            <input
+                type="checkbox"
+                @bind="@MovieCardViewModel.Movie.IsInWatchList"
+                @bind:event="oninput" @bind:after="MovieCardViewModel.ToggleWatchlist"/>
+
+            <span class="slider">
+                <span class="slider-label">
+                    @if (MovieCardViewModel.Movie.IsInWatchList)
+                    {
+                        <p>In Watchlist</p>
+                    }
+                    else
+                    {
+                        <p>Add to Watchlist</p>
+                    }
+                </span>
+            </span>
+        </label>
+    </div>
+</div>
+
+@code {
+
+    [Parameter] public Movie Movie { get; set; } = new();
+
+    protected override void OnParametersSet()
+    {
+        MovieCardViewModel.Movie = Movie;
+        StateHasChanged();
+    }
+
+    private void HandleError(object _)
+    {
+        MovieCardViewModel.HandleErrorByLoadingImage();
+        StateHasChanged(); 
+    }
+}
